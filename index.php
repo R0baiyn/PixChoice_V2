@@ -2,6 +2,7 @@
 session_start();
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/databaseconnect.php');
+require_once(__DIR__ . '/fonctions.php')
 ?>
 
 <!doctype html>
@@ -15,5 +16,6 @@ require_once(__DIR__ . '/databaseconnect.php');
 </head>
 <body>
 
-<?php include('header.php');
+<?php
+include('header.php');
 include('login.php');
