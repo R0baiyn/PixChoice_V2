@@ -15,3 +15,5 @@ require_once(__DIR__ . '/databaseconnect.php');
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<?php include('header.php') ?>

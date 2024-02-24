@@ -7,5 +7,5 @@ try {
     );
     $sql_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (Exception $exception) {
-    die('Erreur : ' . $exception->getMessage());
+    die('Connexion impossible...');
 }

@@ -6,4 +6,5 @@ $sql_host="localhost:3306";
 $sql_id="root";
 $sql_password="";
 $sql_dbname="pixchoice";
+$hash = 'hash'
 ?>
