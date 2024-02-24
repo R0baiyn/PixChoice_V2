@@ -22,7 +22,7 @@ if (isset($postData['identifiant']) &&  isset($postData['password'])) {
     }
 
     if (!isset($_SESSION['LOGGED_USER'])) {
-        $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Les informations données ne correspondent pas à un utilisateur';
+        $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Votre identifiant, votre mot de passe ou les deux sont incorrects... Veuillez réessayer.';
     }
     redirectToUrl('index.php');
 }
