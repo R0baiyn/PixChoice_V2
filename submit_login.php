@@ -7,7 +7,6 @@ require_once(__DIR__ . '/fonctions.php');
 
 $postData = $_POST;
 
-// Validation du formulaire
 if (isset($postData['identifiant']) &&  isset($postData['password'])) {
     foreach ($users as $user) {
         if (
@@ -23,8 +22,9 @@ if (isset($postData['identifiant']) &&  isset($postData['password'])) {
 
     if (!isset($_SESSION['LOGGED_USER'])) {
         $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Votre identifiant, votre mot de passe ou les deux sont incorrects... Veuillez réessayer.';
+        redirectToUrl('index.php?connexion=1');
     }
     redirectToUrl('index.php');
 }
 $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Un problème est survenu lors de la connexion. Veuillez réessayer...';
-redirectToUrl('index.php');
+redirectToUrl('index.php?connexion=1');
