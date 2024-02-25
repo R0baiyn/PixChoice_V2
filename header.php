@@ -19,7 +19,7 @@ $people_actuel = $requete -> fetchAll();
     </form>
 
 <?php elseif(isset($_SESSION['LOGGED_USER'])) :?>
-    <form method="post" action="index.php">
+    <form method="post" action="admin.php">
         <button type='submit'class="pure-button pure-button-primary" name="panel admin">Panel Admin</button>
     </form>
     <form method="post" action="logout.php">
