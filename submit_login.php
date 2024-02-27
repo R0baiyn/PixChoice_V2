@@ -22,9 +22,9 @@ if (isset($postData['identifiant']) &&  isset($postData['password'])) {
 
     if (!isset($_SESSION['LOGGED_USER'])) {
         $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Votre identifiant, votre mot de passe ou les deux sont incorrects... Veuillez réessayer.';
-        redirectToUrl('index.php?connexion=1');
+        redirectToUrl('index.php?connexion');
     }
-    redirectToUrl('index.php');
+    redirectToUrl('admin.php');
 }
 $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Un problème est survenu lors de la connexion. Veuillez réessayer...';
-redirectToUrl('index.php?connexion=1');
+redirectToUrl('index.php?connexion');
