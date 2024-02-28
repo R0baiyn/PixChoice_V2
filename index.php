@@ -2,7 +2,8 @@
 session_start();
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/databaseconnect.php');
-require_once(__DIR__ . '/fonctions.php')
+require_once(__DIR__ . '/fonctions.php');
+cookie();
 ?>
 
 <!doctype html>

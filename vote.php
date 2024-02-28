@@ -1,5 +1,4 @@
 <?php 
-cookie();
 // Do we have to post a vote ?
 $deja_vote = 0;
 if (!empty($_POST)){
@@ -38,9 +37,8 @@ if (!empty($_POST)){
         }
     }
     $deja_vote = intval($_POST['deja_vote']);
-    setcookie('NB_VOTE', $deja_vote,['expires' => $_COOKIE['cookie_exp'], 'secure' => true, 'httponly' => true,]);
 }
-if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=9): ?>
+if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=10): ?>
     <br>
     <div class="alert alert-danger" role="alert">
     <?php echo "Vous ne pouvez voter que 10 fois par heure. Vous pourrez revoter dans " . $_COOKIE['cookie_exp']-time() . " secondes"; ?>
