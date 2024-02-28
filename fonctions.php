@@ -13,7 +13,7 @@ function cookie() {
             'secure' => true,
             'httponly' => true,
         ]);
-        setcookie('NB_VOTE', '1', [
+        setcookie('NB_VOTE', '0', [
             'expires' => $exp,
             'secure' => true,
             'httponly' => true,

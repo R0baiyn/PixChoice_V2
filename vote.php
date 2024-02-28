@@ -41,7 +41,8 @@ if (!empty($_POST)){
 if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=10): ?>
     <br>
     <div class="alert alert-danger" role="alert">
-    <?php echo "Vous ne pouvez voter que 10 fois par heure. Vous pourrez revoter dans " . $_COOKIE['cookie_exp']-time() . " secondes"; ?>
+    <?php $temps = $_COOKIE['cookie_exp']-time();
+    echo "Vous ne pouvez voter que 10 fois par heure. Vous pourrez revoter dans " . $temps . " secondes"; ?>
     </div>
     <br>
     <form action="index.php">
