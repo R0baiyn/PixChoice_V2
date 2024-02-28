@@ -15,20 +15,20 @@ $people_actuel = $requete -> fetchAll();
 
 <?php if (!isset($_SESSION['LOGGED_USER']) && !isset($postData['connexion']) && !isset($getData['connexion'])) : ?>
     <form method="post" action="index.php">
-        <button type='submit'class="pure-button pure-button-primary" name='connexion'>Se connecter</button>
+        <button type='submit'class="pure-button pure-button-primary" name='connexion' style="margin: 1em;">Se connecter</button>
     </form>
 
 <?php elseif(isset($_SESSION['LOGGED_USER'])) :?>
     <form method="post" action="admin.php">
-        <button type='submit'class="pure-button pure-button-primary" name="panel admin">Panel Admin</button>
+        <button type='submit'class="pure-button pure-button-primary" name="panel admin" style="margin: 1em;">Panel Admin</button>
     </form>
     <form method="post" action="logout.php">
-        <button type='submit'class="pure-button pure-button-primary">Se déconnecter</button>
+        <button type='submit'class="pure-button pure-button-primary" style="margin: 1em;">Se déconnecter</button>
     </form>
 
 <?php else :?>
     <form method="post" action="index.php">
-        <button type='submit'class="pure-button pure-button-primary">Voter sans se connecter</button>
+        <button type='submit'class="pure-button pure-button-primary" style="margin: 1em;">Voter sans se connecter</button>
     </form>
 
 <?php endif; ?>

@@ -1,4 +1,5 @@
 <?php 
+cookie();
 // Do we have to post a vote ?
 $deja_vote = 0;
 if (!empty($_POST)){
@@ -37,37 +38,48 @@ if (!empty($_POST)){
         }
     }
     $deja_vote = intval($_POST['deja_vote']);
+    setcookie('NB_VOTE', $deja_vote,['expires' => $_COOKIE['cookie_exp'], 'secure' => true, 'httponly' => true,]);
 }
-?>
-<div>
-            <form action="index.php" method="POST" class="vote">
-                <?php
-                    // Take 6 random images from database
-                    $sql_images= "SELECT * FROM concours ORDER BY RAND() LIMIT 0,6 ;";
+if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=9): ?>
+    <br>
+    <div class="alert alert-danger" role="alert">
+    <?php echo "Vous ne pouvez voter que 10 fois par heure. Vous pourrez revoter dans " . $_COOKIE['cookie_exp']-time() . " secondes"; ?>
+    </div>
+    <br>
+    <form action="index.php">
+        <button type='submit'class="pure-button pure-button-primary">Actualiser</button>
+    </form>
+<?php else:?>
+    <div>
+        <form action="index.php" method="POST" class="vote">
+            <?php
+                // Take 6 random images from database
+                $sql_images= "SELECT * FROM concours ORDER BY RAND() LIMIT 0,6 ;";
 
-                    $requete = $sql_bdd->prepare($sql_images);
-                    $requete->execute();
-                    $result_images = $requete->fetchAll();
+                $requete = $sql_bdd->prepare($sql_images);
+                $requete->execute();
+                $result_images = $requete->fetchAll();
 
-                    $images_ids = array();
-                        
-                    // For each image
-                    foreach ($result_images as $enr) {
-                        $images_id[] = $enr["id"];
+                $images_ids = array();
+                    
+                // For each image
+                foreach ($result_images as $enr) {
+                    $images_id[] = $enr["id"];
 
-                        // Print HTML code for a clickable image
-                        echo "
-                        <div class='choice'>
-                            <input type='radio' name='nom_image' value='{$enr['image']}' id='{$enr['image']}' onclick='this.form.submit()'>
-                            <label class='item' for='{$enr['image']}'>
-                                <div class='lr-borders'></div>
-                                <img class='image' src='images/{$enr['image']}' alt='image {$enr['image']}'>
-                            </label>
-                        </div>";
-                    }
-                    echo "<input name='deja_vote' type='hidden' value='" . ($deja_vote + 1) . "'>";
+                    // Print HTML code for a clickable image
+                    echo "
+                    <div class='choice'>
+                        <input type='radio' name='nom_image' value='{$enr['image']}' id='{$enr['image']}' onclick='this.form.submit()'>
+                        <label class='item' for='{$enr['image']}'>
+                            <div class='lr-borders'></div>
+                            <img class='image' src='images/{$enr['image']}' alt='image {$enr['image']}'>
+                        </label>
+                    </div>";
+                }
+                echo "<input name='deja_vote' type='hidden' value='" . ($deja_vote + 1) . "'>";
 
-                    $_SESSION["last_seen"] = $images_id;
-                ?>
-            </form>
-        </div>
+                $_SESSION["last_seen"] = $images_id;
+            ?>
+        </form>
+    </div>
+<?php endif;?>
