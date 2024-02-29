@@ -2,8 +2,9 @@
 session_start();
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/databaseconnect.php');
+require_once(__DIR__ . '/variables.php');
 require_once(__DIR__ . '/fonctions.php');
-cookie();
+cookie($temps_vote[0][0]);
 ?>
 
 <!doctype html>

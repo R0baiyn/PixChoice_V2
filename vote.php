@@ -1,4 +1,5 @@
-<?php 
+<?php
+if ($activation_vote[0][0] === 1){
 // Do we have to post a vote ?
 $deja_vote = 0;
 if (!empty($_POST)){
@@ -38,11 +39,11 @@ if (!empty($_POST)){
     }
     $deja_vote = intval($_POST['deja_vote']);
 }
-if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=10): ?>
+if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=$nombre_vote[0][0] && (!isset($_SESSION['LOGGED_USER']) || $limite_vote[0][0] === 0)): ?>
     <br>
     <div class="alert alert-danger" role="alert">
     <?php $temps = $_COOKIE['cookie_exp']-time();
-    echo "Vous ne pouvez voter que 10 fois par heure. Vous pourrez revoter dans " . $temps . " secondes"; ?>
+    echo "Vous ne pouvez voter que ". $nombre_vote[0][0] ." fois toute les ". $temps_vote[0][0] ." secondes. Vous pourrez revoter dans " . $temps . " secondes"; ?>
     </div>
     <br>
     <form action="index.php">
@@ -81,4 +82,7 @@ if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=10): ?>
             ?>
         </form>
     </div>
-<?php endif;?>
+<?php endif;
+} else {
+    echo '<div class="alert alert-danger" role="alert">Le vote est actuellement désactivé</div>';
+}

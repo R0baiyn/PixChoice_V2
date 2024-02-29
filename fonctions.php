@@ -5,9 +5,9 @@ function redirectToUrl(string $url): never
     exit();
 }
 
-function cookie() {
+function cookie($temps) {
     if (!isset($_COOKIE["NB_VOTE"])){
-        $exp = time() + 3600;
+        $exp = time() + $temps;
         setcookie('cookie_exp', $exp, [
             'expires' => $exp,
             'secure' => true,

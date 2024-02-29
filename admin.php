@@ -2,7 +2,8 @@
 session_start();
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/databaseconnect.php');
-require_once(__DIR__ . '/fonctions.php')
+require_once(__DIR__ . '/fonctions.php');
+require_once(__DIR__ . '/variables.php');
 ?>
 
 <!doctype html>
@@ -20,6 +21,7 @@ require_once(__DIR__ . '/fonctions.php')
 
 <?php
 $getData = $_GET;
+$postData = $_POST;
 if (!isset($_SESSION['LOGGED_USER'])) {
     $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vous ne pouvez pas accéder à cette page sans être connecté.';
     redirectToUrl('index.php?connexion');
