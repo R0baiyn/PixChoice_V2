@@ -1,5 +1,5 @@
 <?php
-if ($activation_vote[0][0] === 1){
+if ($activation_vote[0][0]){
 // Do we have to post a vote ?
 $deja_vote = 0;
 if (!empty($_POST)){
@@ -39,7 +39,7 @@ if (!empty($_POST)){
     }
     $deja_vote = intval($_POST['deja_vote']);
 }
-if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=$nombre_vote[0][0] && (!isset($_SESSION['LOGGED_USER']) || $limite_vote[0][0] === 0)): ?>
+if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=$nombre_vote[0][0] && (!isset($_SESSION['LOGGED_USER']) || !$limite_vote[0][0])): ?>
     <br>
     <div class="alert alert-danger" role="alert">
     <?php $temps = $_COOKIE['cookie_exp']-time();

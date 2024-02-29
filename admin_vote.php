@@ -42,20 +42,20 @@ include(__DIR__ . '/variables.php');
             <h2 class="content-subhead">Activation / Désactivation du vote.</h2>
             <div style="margin-top: 15px;">
                 <label class="switch">
-                    <input type="checkbox" name="activation_vote" <?php if ($activation_vote[0][0] === 1){echo 'checked';} ?>>
+                    <input type="checkbox" name="activation_vote" <?php if ($activation_vote[0][0]){echo 'checked';} ?>>
                     <span class="slider round"></span>
                 </label>
             </div>
-            <p>affichage en php si le vote est actif ou non</p>
+            <p><?php if ($activation_vote[0][0]){echo"Le vote est actuellement activé";} else {echo"Le vote est actuellement désactivé";} ?></p>
             
             <h2 class="content-subhead">Activation / Désactivation du vote pour les admins malgré la limite.</h2>
             <div style="margin-top: 15px;">
                 <label class="switch">
-                    <input type="checkbox" name="limite_vote" <?php if ($limite_vote[0][0] === 1){echo 'checked';} ?>>
+                    <input type="checkbox" name="limite_vote" <?php if ($limite_vote[0][0]){echo 'checked';} ?>>
                     <span class="slider round"></span>
                 </label>
             </div>
-            <p>affichage en php si le vote est possible pour les admins ou pas</p>
+            <p><?php if ($limite_vote[0][0]){echo"Les admins peuvent voter sans limites";} else {echo"Les admins ne peuvent pas voter sans limites";} ?></p>
 
             <h2 class="content-subhead">Nombre d'actualisations possibles sur un temps donné</h2>
             <div class="pure-control-group">
