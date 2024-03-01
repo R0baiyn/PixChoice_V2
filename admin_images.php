@@ -20,7 +20,7 @@ input[type=file]::file-selector-button:hover {
     </div>
     <div class="content">
             <h2 class="content-subhead">Cette page permet de s'occuper des images, d'en supprimer ou d'en ajouter.</h2>
-            <h2 class="content-subhead">Ajout d'images</h2>
+            <h2 class="content-subhead">Ajout d'images (pas plus de 20 à la fois)</h2>
 
             <form action="add_images.php" method="post" enctype="multipart/form-data">
                 <input type="file" id="screenshot" name="screenshot[]" multiple accept="image/png"/><br><br>

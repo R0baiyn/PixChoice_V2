@@ -14,15 +14,14 @@ foreach ($_FILES["screenshot"]["error"] as $key => $error) {
     $resultats = $requete->fetchAll();
 
     $id_image = 1;
-    $pas_trouve = true;
-    while ($pas_trouve){
-        if ($resultats[$id_image -1]['id'] === $id_image){
+    if ($nb_concours[0][0]){
+        foreach ($resultats as $resultat) {
+            if ("".$id_image."" !== $resultat['id']){
+                break;
+            }
             $id_image += 1;
-        } else {
-            $pas_trouve = false;
         }
     }
-
 
     if (strlen($id_image)===1) {
         $nom_image = "00".$id_image.".png";
@@ -41,4 +40,4 @@ foreach ($_FILES["screenshot"]["error"] as $key => $error) {
     }
 }
 
-redirectToUrl("admin.php?Images");
+redirectToUrl("admin.php?Images");?>
