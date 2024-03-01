@@ -34,10 +34,7 @@ include(__DIR__ . '/variables.php');
         <h1>Configuration du vote</h1>
     </div>
     <div class="content">
-            <h2 class="content-subhead"></h2>
-            <p>
-                Cette page permet de configurer le vote, vous pouvez activer ou non la possibilité de voter, le nombre de vote sur une certaine durée, et la durée en question.
-            </p>
+            <h2 class="content-subhead">Cette page permet de configurer le vote, vous pouvez activer ou non la possibilité de voter, le nombre de vote sur une certaine durée, et la durée en question.</h2>
             <form method="post" action="admin.php?Vote" class="pure-form">
             <h2 class="content-subhead">Activation / Désactivation du vote.</h2>
             <div style="margin-top: 15px;">

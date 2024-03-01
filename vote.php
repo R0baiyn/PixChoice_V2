@@ -1,5 +1,5 @@
 <?php
-if ($activation_vote[0][0]){
+if ($activation_vote[0][0] && $nb_concours[0][0] >= 6){
 // Do we have to post a vote ?
 $deja_vote = 0;
 if (!empty($_POST)){
@@ -83,6 +83,8 @@ if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=$nombre_vote[0][0] && (!i
         </form>
     </div>
 <?php endif;
+} elseif ($nb_concours[0][0] <= 6){
+    echo '<div class="alert alert-danger" role="alert">Il n\'y a pas assez d\'image disponible</div>';
 } else {
     echo '<div class="alert alert-danger" role="alert">Le vote est actuellement désactivé</div>';
 }

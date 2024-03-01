@@ -16,3 +16,7 @@ $nombre_vote = $requete->fetchAll();
 $requete = $sql_bdd->prepare('SELECT temps_vote FROM config');
 $requete->execute();
 $temps_vote = $requete->fetchAll();
+
+$requete = $sql_bdd->prepare('SELECT COUNT(*) FROM concours');
+$requete->execute();
+$nb_concours = $requete->fetchAll();
