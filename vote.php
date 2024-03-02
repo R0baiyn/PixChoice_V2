@@ -20,7 +20,17 @@ if (!empty($_POST)){
 
         $current_ip = $_SERVER["REMOTE_ADDR"];
 
-        if (!in_array($current_ip, $votant[0])) {
+        $inside = false;
+        foreach ($votant as $votant1) {
+            foreach ($votant1 as $votant2) {
+                if ($current_ip === $votant2){
+                    $inside = true;
+                }
+            }
+        }
+
+
+        if (!$inside) {
             $add_votant_query = "INSERT INTO votant VALUES (?)";
             $requete = $sql_bdd -> prepare($add_votant_query);
             $requete -> execute(array($current_ip));
