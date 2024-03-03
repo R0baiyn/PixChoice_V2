@@ -16,8 +16,10 @@
                 <input type="password" id="aligned-password" placeholder="Mot de passe" name="password"/>
             </div>
             <div class="pure-controls">
-                <button type="submit" class="pure-button pure-button-primary">Se connecter</button>
+                <button type="submit" class="pure-button pure-button-primary" style="margin: 1em;">Se connecter</button>
             </div>
     </form>
-<?php endif; ?>
+<?php else: 
+redirectToUrl('index.php');
+endif;?>
 

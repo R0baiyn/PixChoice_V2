@@ -22,10 +22,12 @@ cookie($temps_vote[0][0]);
 $postData = $_POST;
 $getData = $_GET;
 
-include('header.php');
+include('header.php'); 
 
 if (isset($postData['connexion']) || isset($_GET['connexion'])) {
     include('login.php');
 } else {
     include('vote.php');
-};
+};?>
+</body>
+</html>

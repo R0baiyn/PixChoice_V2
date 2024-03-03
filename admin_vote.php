@@ -56,12 +56,12 @@ include(__DIR__ . '/variables.php');
 
             <h2 class="content-subhead">Nombre d'actualisations possibles sur un temps donné</h2>
             <div class="pure-control-group">
-                <input type="number" id="aligned-name" placeholder="Identifiant" name="nombre_vote" value="<?php echo $nombre_vote[0][0]; ?>"/>
+                <input type="number" id="aligned-name" name="nombre_vote" value="<?php echo $nombre_vote[0][0]; ?>"/>
                 <label for="aligned-name">Actualisations avant d'être bloqué</label>
             </div>
             <h2 class="content-subhead">Temps avant de pouvoir revoter</h2>
             <div class="pure-control-group">
-                <input type="number" id="aligned-name" placeholder="Identifiant" name="temps_vote" value="<?php echo $temps_vote[0][0]; ?>"/>
+                <input type="number" id="aligned-name" name="temps_vote" value="<?php echo $temps_vote[0][0]; ?>"/>
                 <label for="aligned-name">Secondes entre chaque vote</label>
             </div>
             <h2 class="content-subhead">Appliquer les changements</h2>

@@ -20,3 +20,11 @@ $temps_vote = $requete->fetchAll();
 $requete = $sql_bdd->prepare('SELECT COUNT(*) FROM concours');
 $requete->execute();
 $nb_concours = $requete->fetchAll();
+
+//admin_resultats.php
+$requete = $sql_bdd->prepare('SELECT affichage_resultats FROM config');
+$requete->execute();
+$affichage_resultats = $requete->fetchAll();
+$requete = $sql_bdd->prepare('SELECT affichage_resultats_admin FROM config');
+$requete->execute();
+$affichage_resultats_admin = $requete->fetchAll();

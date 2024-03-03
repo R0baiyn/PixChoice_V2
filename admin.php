@@ -38,6 +38,9 @@ if (isset($getData['Vote'])){
     include('admin_utilisateurs.php');
 } elseif (isset($getData['Parametres'])){
     include('admin_parametres.php');
+} elseif ($_SESSION['LOGGED_USER']['new_user']) {
+    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vous devez changer votre mot de passe temporaire pour un mot de passe permanent.';
+    include('admin_parametres.php');
 } else {
     include('admin_main.php');
 } ?>

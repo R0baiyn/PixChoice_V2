@@ -9,13 +9,11 @@ $postData = $_POST;
 
 if (isset($postData['identifiant']) &&  isset($postData['password'])) {
     foreach ($users as $user) {
-        if (
-            $user['identifiant'] === $postData['identifiant'] &&
-            $user['password'] === crypt($postData['password'], $hash)
-        ) {
+        if ($user['identifiant'] === $postData['identifiant'] && $user['password'] === crypt($postData['password'], $hash)) {
             $_SESSION['LOGGED_USER'] = [
                 'identifiant' => $user['identifiant'],
                 'user_id' => $user['user_id'],
+                'new_user' => $user['new_user'],
             ];
         }
     }

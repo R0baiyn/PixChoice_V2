@@ -324,3 +324,8 @@ a {
 .alert-dark .alert-link {
     color: #101214;
 }
+
+.image {
+    width: 320px;
+    height: 240px;
+}

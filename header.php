@@ -11,9 +11,14 @@ $people_actuel = $requete -> fetchAll();
 ?>
 
 <header>
-<h1>Pixchoice : Les mathématiques sont belles, 3<sup>ème</sup> ed. 2022</h1>
+<h1>Pixchoice : Les mathématiques sont belles, 3<sup>ème</sup> ed. 2022.</h1>
 
-<?php if (!isset($_SESSION['LOGGED_USER']) && !isset($postData['connexion']) && !isset($getData['connexion'])) : ?>
+<?php 
+    if ($affichage_resultats[0][0] || (isset($_SESSION['LOGGED_USER']) && $affichage_resultats_admin[0][0])): ?>
+        <a class="pure-button pure-button-primary" href="resultats.php" style="margin: 1em; text-align: center; background: rgb(28, 184, 65);">Voir les résultats</a>
+    <?php endif;
+
+    if (!isset($_SESSION['LOGGED_USER']) && !isset($postData['connexion']) && !isset($getData['connexion'])) : ?>
     <form method="post" action="index.php">
         <button type='submit'class="pure-button pure-button-primary" name='connexion' style="margin: 1em;">Se connecter</button>
     </form>

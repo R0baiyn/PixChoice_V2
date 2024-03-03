@@ -57,7 +57,7 @@ if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=$nombre_vote[0][0] && (!i
     </div>
     <br>
     <form action="index.php">
-        <button type='submit'class="pure-button pure-button-primary">Actualiser</button>
+        <button type='submit'class="pure-button pure-button-primary" style="margin: 1em;">Actualiser</button>
     </form>
 <?php else:?>
     <div>
