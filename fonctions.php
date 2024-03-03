@@ -26,3 +26,10 @@ function cookie($temps) {
         ]);
     }
 }
+
+function passwordgen($longueur=8) {
+    $Chaine = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@+-*/";
+    $Chaine = str_shuffle($Chaine);
+    $Chaine = substr($Chaine,0,$longueur);
+    return $Chaine;
+   }

@@ -14,6 +14,7 @@ if (isset($postData['identifiant']) &&  isset($postData['password'])) {
                 'identifiant' => $user['identifiant'],
                 'user_id' => $user['user_id'],
                 'new_user' => $user['new_user'],
+                'superadmin' => $user['superadmin']
             ];
         }
     }

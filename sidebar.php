@@ -6,7 +6,7 @@
     </a>
     <div id="menu">
         <div class="pure-menu">
-            <a class="pure-menu-heading" href="index.php">PixChoice</a>
+            <a class="pure-menu-heading" href="admin.php">PixChoice</a>
 
             <ul class="pure-menu-list">
                 <li class="pure-menu-item <?php if (isset($getData['Vote'])){echo "pure-menu-selected";}?>">
@@ -25,6 +25,14 @@
 
                 <li class="pure-menu-item <?php if (isset($getData['Parametres'])){echo "menu-item-divided pure-menu-selected";}?>">
                     <a href="?Parametres" class="pure-menu-link">Paramètres</a>
+                </li>
+
+                <li class="pure-menu-item">
+                    <a href="logout.php" class="pure-menu-link">Se déconnecter</a>
+                </li>
+
+                <li class="pure-menu-item">
+                    <a href="index.php" class="pure-menu-link">Retourner sur le site</a>
                 </li>
             </ul>
         </div>
