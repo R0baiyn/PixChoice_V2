@@ -28,7 +28,10 @@ if (!isset($_SESSION['LOGGED_USER'])) {
 }
 
 include('sidebar.php');
-if (isset($getData['Vote'])){
+if ($_SESSION['LOGGED_USER']['new_user']) {
+    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vous devez changer votre mot de passe temporaire pour un mot de passe permanent.';
+    include('admin_parametres.php');
+} elseif (isset($getData['Vote'])){
     include('admin_vote.php');
 } elseif (isset($getData['Images'])){
     include('admin_images.php');
@@ -37,10 +40,7 @@ if (isset($getData['Vote'])){
 } elseif (isset($getData['Utilisateurs'])){
     include('admin_utilisateurs.php');
 } elseif (isset($getData['Parametres'])){
-    include('admin_parametres.php');
-} elseif ($_SESSION['LOGGED_USER']['new_user']) {
-    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vous devez changer votre mot de passe temporaire pour un mot de passe permanent.';
-    include('admin_parametres.php');
+    include('admin_parametres.php'); 
 } else {
     include('admin_main.php');
 } ?>
