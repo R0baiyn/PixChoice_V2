@@ -15,8 +15,9 @@ foreach ($_FILES["screenshot"]["error"] as $key => $error) {
 
     $id_image = 1;
     if ($nb_concours[0][0]){
-        foreach ($resultats as $resultat) {
-            if ("".$id_image."" !== $resultat['id']){
+        echo "condition<br>";
+        foreach ($resultats as $inutile) {
+            if ($id_image !== $resultats[$id_image-1]['id']){
                 break;
             }
             $id_image += 1;
