@@ -11,7 +11,7 @@ if (isset($postData['id_new']) && strlen($postData['id_new']) === 0) {
     $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Votre identifiant ne peut pas être vide.';
     redirectToUrl('admin.php?Parametres');
 } elseif (isset($postData['password_new']) && strlen($postData['password_new']) <= 8) {
-    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Votre Vouveau mot de passe doit au moins contenir 8 caractères.';
+    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Votre nouveau mot de passe doit au moins contenir 8 caractères.';
     redirectToUrl('admin.php?Parametres');
 }
 

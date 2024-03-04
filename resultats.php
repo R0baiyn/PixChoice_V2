@@ -83,9 +83,14 @@ if (!isset($_SESSION['LOGGED_USER']) && !isset($postData['connexion']) && !isset
         <button type='submit'class="pure-button pure-button-primary" style="margin: 1em;">Se déconnecter</button>
     </form>
 <?php endif;?>
+
 <p>Votes : <?php echo $votes_actuel[0][0]; ?> | Votants : <?php echo $people_actuel[0][0]; ?></p>
 </header>
 <h1>Résultats :</h1>
+<?php if ($nb_concours[0][0] <= 6){
+    echo '<div class="alert alert-danger" role="alert">Il n\'y a pas assez d\'image disponible</div>';
+    exit();
+};?>
 Le concours a reçu <?php echo $votes_actuel[0][0];?> votes.<br>
 <p>L'image ayant reçu le plus de votes est : <?php echo $sortie[$gagnant]["image"].", avec ".$sortie[$gagnant]["nb_votes"]." votes."; ?></p>
 <img class='pure-img-responsive image' src='images/<?php echo $sortie[$gagnant]["image"]?>'>	
