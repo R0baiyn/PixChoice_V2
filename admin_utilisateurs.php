@@ -1,8 +1,4 @@
 <?php
-if (!$_SESSION['LOGGED_USER']['superadmin']){
-    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vous ne pouvez pas accéder à la page de gestion des utilisateurs car vous n\'êtes pas superadmin.';
-    redirectToUrl('admin.php?main');
-}
 ?>
 <div id="main">
     <div class="header">
@@ -10,6 +6,9 @@ if (!$_SESSION['LOGGED_USER']['superadmin']){
     </div>
     <div class="content">
     <h2 class="content-subhead">Cette page permet de gérer les utilisateurs (superadmin seulement)</h2>
+    <?php if (!$_SESSION['LOGGED_USER']['superadmin']){
+    echo '<div class="alert alert-danger" role="alert" style="position: relative; padding: 1rem 1rem; margin-bottom: 1rem; border: 1px solid transparent; border-radius: .25rem; color: #842029; background-color: #f8d7da; border-color: #f5c2c7;">Vous ne pouvez pas accéder à la page de gestion des utilisateurs car vous n\'êtes pas superadmin.</div>';
+    exit();}?> 
     <h2 class="content-subhead">Ajouter un utilisateur</h2>
     <form method="post" action="update_users.php" class="pure-form">
         <input type="text" id="aligned-name" placeholder="Identifiant" name="newuser_id"/>

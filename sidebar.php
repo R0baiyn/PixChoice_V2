@@ -6,7 +6,7 @@
     </a>
     <div id="menu">
         <div class="pure-menu">
-            <a class="pure-menu-heading" href="admin.php">PixChoice</a>
+            <a class="pure-menu-heading" href="index.php">PixChoice</a>
 
             <ul class="pure-menu-list">
                 <li class="pure-menu-item <?php if (isset($getData['Vote'])){echo "pure-menu-selected";}?>">

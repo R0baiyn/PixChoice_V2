@@ -42,7 +42,10 @@ if ($_SESSION['LOGGED_USER']['new_user']) {
 } elseif (isset($getData['Parametres'])){
     include('admin_parametres.php'); 
 } else {
-    include('admin_main.php');
+    echo "<div id='main'>
+    <div class='header'>
+        <h1>Panel d'administration</h1>
+    </div></div>";
 } ?>
 </div>
 </body>
