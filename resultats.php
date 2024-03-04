@@ -87,7 +87,7 @@ if (!isset($_SESSION['LOGGED_USER']) && !isset($postData['connexion']) && !isset
 <p>Votes : <?php echo $votes_actuel[0][0]; ?> | Votants : <?php echo $people_actuel[0][0]; ?></p>
 </header>
 <h1>Résultats :</h1>
-<?php if ($nb_concours[0][0] <= 6){
+<?php if ($nb_concours[0][0] < 6){
     echo '<div class="alert alert-danger" role="alert">Il n\'y a pas assez d\'image disponible</div>';
     exit();
 };?>
