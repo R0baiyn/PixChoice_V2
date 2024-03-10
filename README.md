@@ -4,7 +4,7 @@ Voici la V2 de PixChoice trouvable ici : [PixChoiceV1](https://github.com/m4th2/
 
 En ligne sur [nsi42.net/085/PixchoiceV2/](https://nsi42.net/085/PixchoiceV2/)
 
-# V2 ?
+## V2 ?
 
 Voici ce que rajoute la V2 de PixChoice :
 
@@ -41,3 +41,12 @@ Voici ce que rajoute la V2 de PixChoice :
    * Modification de l'identifiant
   
    * Modification du mot de passe
+
+# Mise en place sur votre serveur
+
+Afin de mettre en place PixChoice_V2 sur votre serveur :
+
+1. Uploadez les fichiers sur le serveur.
+2. Modifiez config.php pour que les variables correspondent à votre base de donnée et choisissez un hash pour sécuriser les mot de passe de vos utilisateurs.
+3. Ajoutez dans la base de donnée un utilisateur depuis votre base de donnée avec son identifiant, son mot de passe hashé, et un 1 dans la colonne superadmin
+4. Vous pouvez désormais accéder à votre PixChoice V2 avec les permissions administrateurs
