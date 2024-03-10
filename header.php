@@ -11,7 +11,7 @@ $people_actuel = $requete -> fetchAll();
 ?>
 
 <header>
-<h1>Pixchoice : Les mathématiques sont belles, 3<sup>ème</sup> ed. 2022.</h1>
+<h1>Grand Titre</h1>
 
 <?php 
     if ($affichage_resultats[0][0] || (isset($_SESSION['LOGGED_USER']) && $affichage_resultats_admin[0][0])): ?>
@@ -42,8 +42,6 @@ $people_actuel = $requete -> fetchAll();
 
 <?php if (!isset($postData['connexion']) && !isset($_GET['connexion'])) :?>
 <article>
-    <p>Les élèves de en classe de seconde 5 et 7 du lycée Louis Pasteur d'Avignon ont produit 55 images uniques sur leur calculatrice NumWorks.</p>
-    <p>Vous pouvez : <b>voter pour vos images favorites,</b> ou <a href="https://twitter.com/nsi_xyz/status/1507684348820082690">découvrir une sélection de 42 images</a></p> 
-    <p>6 images vous sont présentées aléatoirement, vous en choisissez une et d'autres vous seront présentées.</p>
+    <p>Texte sous-titre</p>
 </article>
 <?php endif; ?>
