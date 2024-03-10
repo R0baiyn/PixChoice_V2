@@ -2,6 +2,8 @@
 
 Voici la V2 de PixChoice trouvable ici : [PixChoiceV1](https://github.com/m4th2/PixChoice)
 
+En ligne sur [nsi42.net/085/PixchoiceV2/](https://nsi42.net/085/PixchoiceV2/)
+
 # V2 ?
 
 Voici ce que rajoute la V2 de PixChoice :
