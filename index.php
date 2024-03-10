@@ -1,13 +1,15 @@
 <?php
-session_start();
-require_once(__DIR__ . '/config.php');
-require_once(__DIR__ . '/databaseconnect.php');
-require_once(__DIR__ . '/variables.php');
-require_once(__DIR__ . '/fonctions.php');
-cookie($temps_vote[0][0]);
+session_start(); // Création d'une session pour sauvegardé des données
+// Appel de différentes pages pour instancier :
+require_once(__DIR__ . '/config.php'); // Les identifiants de la base de donnée
+require_once(__DIR__ . '/databaseconnect.php'); // Une connexion à la base de donnée
+require_once(__DIR__ . '/variables.php'); // Des variables récupérées en sql
+require_once(__DIR__ . '/fonctions.php'); // Des fonctions
+cookie($temps_vote[0][0]); // Appel de la fonction cookie qui va créer un cookie 
+//pour contenir le nombre de vote fait
 ?>
 
-<!doctype html>
+<!doctype html> <!-- Code html basique -->
 <html lang="fr">
 <head>
     <meta charset="utf-8">
@@ -18,16 +20,17 @@ cookie($temps_vote[0][0]);
 </head>
 <body>
 
-<?php
+<?php // retour en php pour récupérer les variables envoyés en post ou en get
 $postData = $_POST;
 $getData = $_GET;
 
-include('header.php'); 
+include('header.php'); // Ajout de l'en tête de page
 
-if (isset($postData['connexion']) || isset($_GET['connexion'])) {
+// ajout de la page de connexion si des variables existent
+if (isset($postData['connexion']) || isset($_GET['connexion'])) { 
     include('login.php');
 } else {
-    include('vote.php');
+    include('vote.php'); // et si elles n'existent pas ajout de la page de vote
 };?>
-</body>
+</body> <!-- Fin du code html -->
 </html>
