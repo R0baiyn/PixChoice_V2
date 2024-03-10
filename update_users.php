@@ -55,4 +55,3 @@ if (isset($postData['newuser_id'])){
     $requete->execute();
     redirectToUrl("admin.php?Utilisateurs");
 }
-

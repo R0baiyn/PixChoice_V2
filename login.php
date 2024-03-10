@@ -22,4 +22,3 @@
 <?php else: 
 redirectToUrl('index.php');
 endif;?>
-

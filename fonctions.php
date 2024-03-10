@@ -33,3 +33,4 @@ function passwordgen($longueur=8) {
     $Chaine = substr($Chaine,0,$longueur);
     return $Chaine;
    }
+   
