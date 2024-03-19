@@ -39,6 +39,7 @@ function isadmin(){
     include(__DIR__ . '/config.php');
     include(__DIR__ . '/databaseconnect.php');
     include(__DIR__ . '/variables.php');
+    verif_session();
     foreach($users as $user) {
         if ($user['id_user'] === $_SESSION['LOGGED_USER']['id_user']) {
             return true;
@@ -51,6 +52,7 @@ function issuperadmin(){
     include(__DIR__ . '/config.php');
     include(__DIR__ . '/databaseconnect.php');
     include(__DIR__ . '/variables.php');
+    verif_session();
     $requete = $sql_bdd -> prepare("SELECT * FROM users WHERE id_user = '". $_SESSION['LOGGED_USER']['id_user']."'");
     $requete -> execute();
     $votant = $requete -> fetchAll();
@@ -61,3 +63,10 @@ function issuperadmin(){
         return false;
     }
 }
+
+function verif_session(){
+    if (session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+    }
+}
+

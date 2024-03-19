@@ -55,4 +55,6 @@ if (isset($postData['newuser_id'])){
     $requete = $sql_bdd->prepare("DELETE FROM users WHERE id_user = '".$postData['remove_user']."'");
     $requete->execute();
     redirectToUrl("admin.php?Utilisateurs");
+} else {
+    redirectToUrl("admin.php?Utilisateurs");
 }
