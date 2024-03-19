@@ -14,25 +14,12 @@ $getData = $_GET;
 
 if (!empty($postData)){
     foreach ($postData as $image) {
-        $requete = $sql_bdd->prepare("DELETE FROM concours WHERE image = '" . $image . "'");
+        $requete = $sql_bdd->prepare("UPDATE concours SET nb_votes = 0 WHERE image = '" . $image . "'; UPDATE concours SET nb_fois = 0 WHERE image = '" . $image . "'");
         $requete->execute();
-        if (file_exists('images/'.$image)) {
-            unlink('images/'.$image);
-        }
     }
 }
 if (isset($getData['all'])){
-
-    $requete = $sql_bdd->prepare("SELECT * FROM concours");
+    $requete = $sql_bdd->prepare("UPDATE concours SET nb_votes = 0; UPDATE concours SET nb_fois = 0");
     $requete->execute();
-    $images = $requete->fetchAll();
-
-    foreach ($images as $image) {
-        $requete = $sql_bdd->prepare("DELETE FROM concours WHERE image = '" . $image['image'] . "'");
-        $requete->execute();
-        if (file_exists('images/'.$image['image'])) {
-            unlink('images/'.$image['image']);
-        }
-    }
 }
 redirectToUrl('admin.php?Images');

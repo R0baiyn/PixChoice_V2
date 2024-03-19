@@ -1,4 +1,13 @@
 <?php
+session_start();
+require_once(__DIR__ . '/config.php');
+require_once(__DIR__ . '/databaseconnect.php');
+require_once(__DIR__ . '/fonctions.php');
+require_once(__DIR__ . '/variables.php');
+if (!isadmin()){
+    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vous ne pouvez pas accéder à cette page sans être connecté.';
+    redirectToUrl('index.php?connexion');
+}
 ?>
 <div id="main">
     <div class="header">
@@ -6,7 +15,7 @@
     </div>
     <div class="content">
     <h2 class="content-subhead">Cette page permet de gérer les utilisateurs (superadmin seulement)</h2>
-    <?php if (!$_SESSION['LOGGED_USER']['superadmin']){
+    <?php if (!issuperadmin()){
     echo '<div class="alert alert-danger" role="alert" style="position: relative; padding: 1rem 1rem; margin-bottom: 1rem; border: 1px solid transparent; border-radius: .25rem; color: #842029; background-color: #f8d7da; border-color: #f5c2c7;">Vous ne pouvez pas accéder à la page de gestion des utilisateurs car vous n\'êtes pas superadmin.</div>';
     exit();}?> 
     <h2 class="content-subhead">Ajouter un utilisateur</h2>

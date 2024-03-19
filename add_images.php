@@ -3,6 +3,11 @@ require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/databaseconnect.php');
 require_once(__DIR__ . '/fonctions.php');
 
+if (!isadmin()){
+    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vous ne pouvez pas accéder à cette page sans être connecté.';
+    redirectToUrl('index.php?connexion');
+}
+
 $uploads_dir = __DIR__.'/images';
 foreach ($_FILES["screenshot"]["error"] as $key => $error) {
     $requete = $sql_bdd->prepare('SELECT COUNT(*) FROM concours');

@@ -1,4 +1,6 @@
 <?php
+
+
 $votes = "SELECT SUM(nb_votes) as result FROM concours";
 $requete = $sql_bdd -> prepare($votes);
 $requete -> execute();
@@ -11,7 +13,7 @@ $people_actuel = $requete -> fetchAll();
 ?>
 
 <header>
-<h1>Grand Titre</h1>
+<h1><?php echo $header_titre[0][0]; ?></h1>
 
 <?php 
     if ($affichage_resultats[0][0] || (isset($_SESSION['LOGGED_USER']) && $affichage_resultats_admin[0][0])): ?>
@@ -42,6 +44,6 @@ $people_actuel = $requete -> fetchAll();
 
 <?php if (!isset($postData['connexion']) && !isset($_GET['connexion'])) :?>
 <article>
-    <p>Texte sous-titre</p>
+    <p><?php echo $header_texte[0][0]; ?></p>
 </article>
 <?php endif; ?>

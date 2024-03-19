@@ -1,4 +1,16 @@
 <?php
+session_start();
+require_once(__DIR__ . '/config.php');
+require_once(__DIR__ . '/databaseconnect.php');
+require_once(__DIR__ . '/fonctions.php');
+require_once(__DIR__ . '/variables.php');
+if (!isadmin()){
+    $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vous ne pouvez pas accéder à cette page sans être connecté.';
+    redirectToUrl('index.php?connexion');
+}
+?>
+
+<?php
 include(__DIR__ . '/variables.php');
 if (!empty($postData)){
     if (isset($postData["affichage_resultats"])){

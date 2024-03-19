@@ -1,4 +1,5 @@
 <?php
+
 function redirectToUrl(string $url): never
 {
     header("Location: {$url}");
@@ -34,3 +35,29 @@ function passwordgen($longueur=8) {
     return $Chaine;
    }
    
+function isadmin(){
+    include(__DIR__ . '/config.php');
+    include(__DIR__ . '/databaseconnect.php');
+    include(__DIR__ . '/variables.php');
+    foreach($users as $user) {
+        if ($user['id_user'] === $_SESSION['LOGGED_USER']['id_user']) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function issuperadmin(){
+    include(__DIR__ . '/config.php');
+    include(__DIR__ . '/databaseconnect.php');
+    include(__DIR__ . '/variables.php');
+    $requete = $sql_bdd -> prepare("SELECT * FROM users WHERE id_user = '". $_SESSION['LOGGED_USER']['id_user']."'");
+    $requete -> execute();
+    $votant = $requete -> fetchAll();
+    print_r($votant);
+    if ($votant[0]['superadmin']) {
+        return true;
+    } else {
+        return false;
+    }
+}

@@ -12,7 +12,7 @@ if (isset($postData['identifiant']) &&  isset($postData['password'])) {
         if ($user['identifiant'] === $postData['identifiant'] && $user['password'] === crypt($postData['password'], $hash)) {
             $_SESSION['LOGGED_USER'] = [
                 'identifiant' => $user['identifiant'],
-                'user_id' => $user['user_id'],
+                'id_user' => $user['id_user'],
                 'new_user' => $user['new_user'],
                 'superadmin' => $user['superadmin']
             ];
