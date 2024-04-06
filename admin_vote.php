@@ -35,12 +35,12 @@ if (!empty($postData)){
     }
 
     if ($postData['header_titre'] !== $header_titre[0][0]){
-        $requete = $sql_bdd->prepare("UPDATE config SET header_titre = '" . $postData['header_titre'] . "'");
+        $requete = $sql_bdd->prepare("UPDATE config SET header_titre = '" . strip_tags($postData['header_titre'], ['<br>', '<a>', '</a>', '<strong>', '</strong>']) . "'");
         $requete->execute();
     }
 
     if ($postData['header_texte'] !== $header_texte[0][0]){
-        $requete = $sql_bdd->prepare("UPDATE config SET header_texte = '" . $postData['header_texte'] . "'");
+        $requete = $sql_bdd->prepare("UPDATE config SET header_texte = '" . strip_tags($postData['header_texte'], ['<br>', '<a>', '</a>', '<strong>', '</strong>']) . "'");
         $requete->execute();
     }
 

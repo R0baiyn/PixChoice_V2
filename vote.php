@@ -4,21 +4,13 @@ if ($activation_vote[0][0] && $nb_concours[0][0] >= 6){
 $deja_vote = 0;
 if (!empty($_POST)){
     if (isset($_POST["nom_image"]) && strlen($_POST["nom_image"]) == 7){
-        // Vote for a given image (image in $_POST)
-        $ajout="UPDATE concours
-            SET nb_votes = nb_votes + 1
-            WHERE image = '" . $_POST["nom_image"] . "'";
-
-        $requete = $sql_bdd -> prepare($ajout);
-        $requete -> execute();
+        $current_ip = $_SERVER["REMOTE_ADDR"];
 
         // Add fellow to votelist
         $votant_query = "SELECT * FROM votant";
         $requete = $sql_bdd -> prepare($votant_query);
         $requete -> execute();
         $votant = $requete -> fetchAll();
-
-        $current_ip = $_SERVER["REMOTE_ADDR"];
 
         $inside = false;
         foreach ($votant as $votant1) {
@@ -29,24 +21,41 @@ if (!empty($_POST)){
             }
         }
 
-
         if (!$inside) {
-            $add_votant_query = "INSERT INTO votant VALUES (?)";
+            $add_votant_query = "INSERT INTO votant VALUES (".$current_ip.", 0)";
             $requete = $sql_bdd -> prepare($add_votant_query);
-            $requete -> execute(array($current_ip));
+            $requete -> execute();
         }
 
-        foreach ($_SESSION["last_seen"] as $enr) {
-            // Increment image occurrence number
+        
+        $requete = $sql_bdd->prepare('SELECT last_vote FROM votant WHERE ip = "'. $current_ip .'"');
+        $requete->execute();
+        $votant = $requete->fetchAll();
+        if (time()-$votant[0][0] >= 2) {
+            // Vote for a given image (image in $_POST)
             $ajout="UPDATE concours
-                SET nb_fois = nb_fois + 1
-                WHERE id = '" . $enr . "'";
+                SET nb_votes = nb_votes + 1
+                WHERE image = '" . $_POST["nom_image"] . "'";
 
-            $sth = $sql_bdd->prepare($ajout);
-            $sth->execute();
-            $result_ajout = $sth->fetchAll();
+            $requete = $sql_bdd -> prepare($ajout);
+            $requete -> execute();
+            
+            $votant_query = "UPDATE votant SET last_vote = '" . time() . "' WHERE ip = '" . $current_ip . "'";
+            $requete = $sql_bdd -> prepare($votant_query);
+            $requete -> execute();
+
+            foreach ($_SESSION["last_seen"] as $enr) {
+                // Increment image occurrence number
+                $ajout="UPDATE concours
+                    SET nb_fois = nb_fois + 1
+                    WHERE id = '" . $enr . "'";
+
+                $sth = $sql_bdd->prepare($ajout);
+                $sth->execute();
+                $result_ajout = $sth->fetchAll();
+            }
         }
-    }
+    }   
     $deja_vote = intval($_POST['deja_vote']);
 }
 if (isset($_COOKIE['NB_VOTE']) && $_COOKIE['NB_VOTE']>=$nombre_vote[0][0] && (!isset($_SESSION['LOGGED_USER']) || !$limite_vote[0][0])): ?>

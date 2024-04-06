@@ -56,6 +56,11 @@ include(__DIR__ . '/variables.php');
             </div>
             <p><?php if ($affichage_resultats_admin[0][0]){echo"Les admins peuvent voir les résultats";} else {echo"Les admins ne peuvent pas voir les résultats";} ?></p>
 
+            <?php if ($affichage_resultats[0][0] || (isset($_SESSION['LOGGED_USER']) && $affichage_resultats_admin[0][0])): ?>
+                <h2 class="content-subhead">Voir les résultats</h2>
+                <a class="pure-button pure-button-primary" href="resultats.php" style="text-align: center; background: rgb(28, 184, 65);">Voir les résultats</a>
+            <?php endif; ?>
+
             <h2 class="content-subhead">Appliquer les changements</h2>
             <p>
                 <div class="pure-controls">

@@ -66,7 +66,7 @@ for ($i = 1; $i < count($sortie); $i++) {
 ?>
 <div class="page">
 <header>
-<h1>Pixchoice : Les mathématiques sont belles, 3<sup>ème</sup> ed. 2022.</h1>
+<h1><?php echo $header_titre[0][0]; ?></h1>
 <a class="pure-button pure-button-primary" href="index.php" style="margin: 1em; text-align: center; background: rgb(28, 184, 65);">Retourner au vote</a>
 
 <?php
